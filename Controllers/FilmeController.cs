@@ -21,9 +21,9 @@ public class FilmeController : ControllerBase
             Console.WriteLine(filme.Duracao);
     }
     [HttpGet]  
-    public IEnumerable<Filme> RecuperaFilme()
+    public IEnumerable<Filme> RecuperaFilme([FromQuery] int skip = 0 , int take = 40)
     {
-        return filmes;
+        return filmes.Skip(skip).Take(take);
     }
 
     [HttpGet("{id}")]
